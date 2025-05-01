@@ -2,6 +2,9 @@ package com.ride;
 
 import com.ride.dto.*;
 import com.ride.service.RideShearingService;
+import com.ride.strategy.LuxuryStrategy;
+import com.ride.strategy.SharedFareStrategy;
+import com.ride.strategy.StandardStrategy;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,9 +23,9 @@ public class Main {
         RideShearingService rideShearingService = new RideShearingService();
         rideShearingService.addDriver(driver1);
         rideShearingService.addDriver(driver2);
-        rideShearingService.bookRide(passenger1, 100);
-        rideShearingService.bookRide(passenger1, 50);
-        rideShearingService.bookRide(passenger1, 40);
+        rideShearingService.requestRide(passenger1, 100, new SharedFareStrategy());
+        rideShearingService.requestRide(passenger1, 50, new LuxuryStrategy());
+        rideShearingService.requestRide(passenger1, 40, new StandardStrategy());
 
 //        RideMatchingSystem rideMatchingSystem = new RideMatchingSystem();
 //        rideMatchingSystem.addDriver(driver1);
