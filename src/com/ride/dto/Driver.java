@@ -22,4 +22,9 @@ public class Driver extends User{
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    @Override
+    public void notify(String msg) {
+        System.out.println("Driver: " + msg);
+    }
 }
